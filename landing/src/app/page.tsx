@@ -188,10 +188,10 @@ export default function Home() {
         <section className="border-t border-bg-border/40 bg-bg-primary py-28">
           <div className="max-w-5xl mx-auto px-6">
             <h2 className="font-display font-bold text-3xl mb-3 text-text-primary tracking-tight">
-              Why not Relay?
+              Why not our competitor?
             </h2>
             <p className="font-body text-text-secondary text-base mb-12 max-w-2xl leading-relaxed text-wrap-pretty">
-              Relay ships a Chrome extension that saves what you tell it to. Recalld saves what you actually did.
+              Our competitor ships a Chrome extension that saves what you tell it to. Recalld saves what you actually did.
             </p>
 
             <div className="overflow-x-auto border border-bg-border rounded-[6px] bg-bg-surface/50 backdrop-blur-sm">
@@ -199,7 +199,7 @@ export default function Home() {
                 <thead>
                   <tr className="border-b border-bg-border bg-bg-surface/90 text-sm">
                     <th className="py-5 px-6 font-display font-semibold text-text-muted w-1/3"></th>
-                    <th className="py-5 px-6 font-display font-semibold text-text-secondary w-1/3 border-r border-bg-border">Relay</th>
+                    <th className="py-5 px-6 font-display font-semibold text-text-secondary w-1/3 border-r border-bg-border">Competitor</th>
                     <th className="py-5 px-6 font-display font-semibold text-accent-green bg-accent-green-glow w-1/3">Recalld</th>
                   </tr>
                 </thead>
