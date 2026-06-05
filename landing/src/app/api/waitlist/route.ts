@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { supabase } from "@/lib/supabase";
 
 export async function POST(request: Request) {
   try {
@@ -14,29 +13,28 @@ export async function POST(request: Request) {
       );
     }
 
-    // TODO: replace with Supabase insert when DB is connected
-    const filePath = path.join(process.cwd(), "waitlist.json");
-    
-    let waitlist: string[] = [];
-    if (fs.existsSync(filePath)) {
-      try {
-        const fileContent = fs.readFileSync(filePath, "utf-8");
-        waitlist = JSON.parse(fileContent);
-        if (!Array.isArray(waitlist)) {
-          waitlist = [];
-        }
-      } catch (err) {
-        waitlist = [];
-      }
-    }
+    // Insert email into Supabase
+    const { data, error } = await supabase
+      .from("waitlist")
+      .insert([{ email }]);
 
-    if (!waitlist.includes(email)) {
-      waitlist.push(email);
-      fs.writeFileSync(filePath, JSON.stringify(waitlist, null, 2), "utf-8");
+    if (error) {
+      if (error.code === '23505') {
+        return NextResponse.json(
+          { error: "You are already on the waitlist!" },
+          { status: 400 }
+        );
+      }
+      console.error("Supabase Error:", error);
+      return NextResponse.json(
+        { error: "Failed to join waitlist. Please try again." },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
+    console.error("Server Error:", error);
     return NextResponse.json(
       { error: "Internal server error." },
       { status: 500 }
