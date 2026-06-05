@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env
+.env.local
+.env.*.local
+.agents/
+scratch/
+.DS_Store
+*.log
