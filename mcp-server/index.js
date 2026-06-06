@@ -124,7 +124,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const contextPath = findContextFile(process.cwd());
 
   if (!contextPath) {
-    throw new Error('.context.md not found in the current workspace.');
+    return {
+      content: [{
+        type: 'text',
+        text: 'No context file found. Run npx recalld init in your project first.'
+      }]
+    };
   }
 
   if (name === 'get_recalld_context') {

@@ -1,4 +1,4 @@
-async function run() {
+(async () => {
   try {
     const { execSync } = require('child_process');
     const { readContext, writeContext } = require('./context');
@@ -27,12 +27,9 @@ async function run() {
     const summary = await summarize(diff, existingContext);
     writeContext(summary);
 
-    console.log('  ✓ recalld synced context');
-  } catch (error) {
-    // Silent exit with code 0 on any error
-    process.exit(0);
+    console.log('  recalld synced context');
+  } catch (e) {
+    process.exit(0); // silent fail, never interrupt git
   }
-}
-
-run();
+})();
 

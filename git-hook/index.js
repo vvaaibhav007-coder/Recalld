@@ -14,7 +14,7 @@ function main() {
   // 1. Check if git repo
   const gitDir = path.join(cwd, '.git');
   if (!fs.existsSync(gitDir) || !fs.statSync(gitDir).isDirectory()) {
-    console.error(red('❌ Not a git repo. Run this from inside your project folder.'));
+    console.error(red('Not a git repo. Run this from inside your project folder.'));
     process.exit(1);
   }
 
@@ -22,7 +22,7 @@ function main() {
   const nodeVersion = process.versions.node;
   const majorVersion = parseInt(nodeVersion.split('.')[0], 10);
   if (majorVersion < 18) {
-    console.error(red(`❌ Node.js 18+ is required. Current version is ${nodeVersion}.`));
+    console.error(red(`Node.js 18+ is required. Current version is ${nodeVersion}.`));
     process.exit(1);
   }
 
@@ -75,9 +75,9 @@ node "${hookJsPath}"
     mcpServerPath = parentMcpPath.replace(/\\/g, '/');
   }
 
-  console.log(green('✓ Recalld initialized'));
-  console.log('\nEvery git commit will now auto-update your AI context.');
-  console.log('\nAdd this to your Cursor MCP settings (.cursor/mcp.json):');
+  console.log(green('Recalld initialized'));
+  console.log('\n→ Every git commit will now auto-update your AI context.');
+  console.log('\n→ Add this to your Cursor MCP settings (.cursor/mcp.json):');
   console.log('─────────────────────────────────────────────');
   console.log(JSON.stringify({
     mcpServers: {
@@ -88,8 +88,8 @@ node "${hookJsPath}"
     }
   }, null, 2));
   console.log('─────────────────────────────────────────────');
-  console.log('\nYour context file: .context.md');
-  console.log('Docs: https://recalld.dev');
+  console.log('\n→ Your context file: .context.md');
+  console.log('→ Docs: https://recalld.dev');
 }
 
 function getProjectName(cwd) {

@@ -1,11 +1,11 @@
 {
-  "name": "recalld-mcp-server",
-  "version": "0.1.0",
+  "name": "@vaibhav09/recalld-mcp",
+  "version": "0.1.1",
   "description": "Exposes git commit context to Model Context Protocol clients",
   "main": "index.js",
   "type": "module",
   "bin": {
-    "recalld-mcp": "./index.js"
+    "recalld-mcp": "index.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.1"
